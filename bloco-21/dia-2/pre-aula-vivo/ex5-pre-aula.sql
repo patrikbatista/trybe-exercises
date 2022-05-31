@@ -1,3 +1,4 @@
+-- Exiba o nome e a quantidade de endereços dos clientes cadastrados. Ordene seus resultados por nomes de forma decrescente. Exiba somente os clientes ativos. As informações podem ser encontradas na tabela address e customer.
 SELECT
 	CONCAT(customer.first_name, ' ', customer.last_name) AS customer,
     COUNT(address.address)

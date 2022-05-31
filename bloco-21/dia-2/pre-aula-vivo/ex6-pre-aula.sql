@@ -1,3 +1,4 @@
+-- Monte uma query que exiba o nome, sobrenome e a média de valor (amount) paga aos funcionários no ano de 2006. Use as tabelas payment e staff. Os resultados devem estar agrupados pelo nome e sobrenome do funcionário.
 SELECT 
 	CONCAT(staff.first_name, ' ', staff.last_name),
     AVG(pay.amount) AS media_pagamento
