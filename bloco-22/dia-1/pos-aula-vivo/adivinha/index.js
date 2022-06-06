@@ -8,4 +8,4 @@ while(number !== numberRandon) {
   console.log('Voce errou, tente novamente');
   number = readline.questionInt('Digite um número: ');
 }
-console.log(`Parabéns, você acertou! O número sorteado foi ${numberRandon}`); 
+console.log(`Parabéns, você acertou! O número sorteado foi ${numberRandon}!!!`); 
