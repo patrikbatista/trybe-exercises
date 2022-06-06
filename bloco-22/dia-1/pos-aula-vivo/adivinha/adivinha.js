@@ -1,4 +1,4 @@
-const randomNumber = (number) =>{ 
+const randomNumber = () =>{ 
   const sort = parseInt(Math.random() * 10, 10);
   return sort;
 }
