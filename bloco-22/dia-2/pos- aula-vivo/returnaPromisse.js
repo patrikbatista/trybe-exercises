@@ -14,3 +14,13 @@ const exPromisse = (a, b, c) => {
 
   });
 }
+
+//exercicio 2
+
+const num1= Math.floor(Math.random() * 100 + 1);
+const num2= Math.floor(Math.random() * 100 + 1);
+const num3= Math.floor(Math.random() * 100 + 1);
+
+exPromisse(num1, num2, num3)
+  .then((resp) => console.log(`O resultado e: ${resp}`))
+  .catch((err) => console.log(`erro: ${err.message}`));
