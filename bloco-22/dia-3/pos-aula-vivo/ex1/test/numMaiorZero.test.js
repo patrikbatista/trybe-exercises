@@ -39,4 +39,16 @@ describe('Executa a função que verifica num maior 0', () => {
     });
   });
 
+  describe('Quando o valor informado não for número', () => {
+    it('É uma string', () => {
+      const resp = numMaiorZero('a');
+      expect(resp).to.be.a('string');
+    });
+
+    it('o valor deve ser um numero', () => {
+      const resp = numMaiorZero('a');
+      expect(resp).to.be.equal('o valor deve ser um numero');
+    });
+  });
+
 })
