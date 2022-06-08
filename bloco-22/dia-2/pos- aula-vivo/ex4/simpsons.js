@@ -17,3 +17,18 @@ const findSimpsomId = async (id) => {
   if(!simpsomId) throw new Error('id não encontrado');
   return simpsomId; 
 }
+
+// Criar uma função que altere o arquivo simpsons.json retirando os personagens com id 10 e 6.
+
+const filterSimpsons = async () => {
+  const file = await fs.readFile('./simpsons.json', 'utf8');
+  const simpsons = JSON.parse(file);
+  const filteredSimpsons = simpsons.filter((simpson) => simpson.id !== 10 && simpson.id !== 6);
+  // agora salvar o novo array criado no arquivo simpsons.json
+  const writeFile = await fs.writeFile('./simpsons.json', JSON.stringify(filteredSimpsons));
+  return writeFile;
+}
+
+function main() {
+  filterSimpsons();
+}
