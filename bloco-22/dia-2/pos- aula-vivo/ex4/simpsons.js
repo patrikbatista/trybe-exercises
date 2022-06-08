@@ -7,3 +7,13 @@ const readAll = async () => {
   //mostrando todos os simpsons 
   strings.forEach((string) => console.log(string));
 }
+
+// criar funcao que pesquise pelo id do personagem
+
+const findSimpsomId = async (id) => {
+  const file = await fs.readFile('./simpsons.json', 'utf8');
+  const simpsons = JSON.parse(file);
+  const simpsomId = simpsons.find((simpsom) => simpsom.id === id);
+  if(!simpsomId) throw new Error('id não encontrado');
+  return simpsomId; 
+}
