@@ -29,6 +29,10 @@ const filterSimpsons = async () => {
   return writeFile;
 }
 
-function main() {
-  filterSimpsons();
+const createSimpsonFamily = async () => {
+  const file = await fs.readFile('./simpsons.json', 'utf8');
+  const simpsons = JSON.parse(file);
+  const filteredSimpsons = simpsons.filter((simpson) => simpson.id === 1 && simpson.id === 4);
+  const newFile = await fs.writeFile('./simpsonsFamily.json', JSON.stringify(filteredSimpsons));
+  return newFile;
 }
