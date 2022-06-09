@@ -8,7 +8,7 @@ const recipes = [
 
 const receitas = Router();
 
-receitas.get('/receitas', (req, res) => {
+receitas.get('/', (req, res) => {
   res.status(200).json(recipes);
 });
 
