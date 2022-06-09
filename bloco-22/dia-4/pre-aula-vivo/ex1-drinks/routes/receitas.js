@@ -11,6 +11,7 @@ const receitas = Router();
 receitas.get('/', (req, res) => {
   res.status(200).json(recipes);
 });
+
 receitas.get('/:id', (req, res) => {
   const { id } = req.params;
   const recipe = recipes.find((r) => r.id === Number(id));
@@ -18,6 +19,13 @@ receitas.get('/:id', (req, res) => {
   if (!recipe) return res.status(404).json({ message: 'Recipe not found!'});
 
   res.status(200).json(recipe);
+});
+
+receitas.get('/search', (req, res) => {
+  const { name } = req.query;
+  const filteredRecipes = recipes.filter((r) => r.name.includes(name));
+  // if (!filteredRecipes) return res.status(404).json({ message: 'Recipe not found!'});
+  res.status(200).json(filteredRecipes);
 });
 
 module.exports = receitas;
