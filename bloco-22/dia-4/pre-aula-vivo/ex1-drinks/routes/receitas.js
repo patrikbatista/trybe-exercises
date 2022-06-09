@@ -11,5 +11,13 @@ const receitas = Router();
 receitas.get('/', (req, res) => {
   res.status(200).json(recipes);
 });
+receitas.get('/:id', (req, res) => {
+  const { id } = req.params;
+  const recipe = recipes.find((r) => r.id === Number(id));
+
+  if (!recipe) return res.status(404).json({ message: 'Recipe not found!'});
+
+  res.status(200).json(recipe);
+});
 
 module.exports = receitas;
