@@ -11,7 +11,7 @@ const drinks = [
 
 const bebidas = Router();
 
-bebidas.get('/bebidas', (req, res) => {
+bebidas.get('/', (req, res) => {
   res.status(200).json(drinks);
 });
 
