@@ -15,4 +15,12 @@ bebidas.get('/', (req, res) => {
   res.status(200).json(drinks);
 });
 
+bebidas.get('/:id', (req, res) => {
+	const { id } = req.params;
+	const drink = drinks.find((d) => d.id === Number(id));
+
+	if (!drink) return res.status(404).json({message: 'drink not found'});
+	return res.status(200).json({ drink });
+});
+
 module.exports = bebidas;
