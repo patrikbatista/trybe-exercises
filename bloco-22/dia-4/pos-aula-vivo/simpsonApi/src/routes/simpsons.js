@@ -3,7 +3,7 @@ const fs = require('fs/promises');
 const path = require('path');
 
 
-const simpsons = Router();
+const simpsonsRouter = Router();
 
 const getAll = async () => {
 
@@ -19,6 +19,7 @@ const getSimpsomId = async (id) => {
   const simpsons = JSON.parse(simpsonsFile);
 
   const simpsonId = simpsons.find((simpson)=> +simpson.id === +id);
+  console.log(simpsonId);
   return simpsonId;
 }
 
@@ -29,29 +30,30 @@ const postSimpson = async (simpson) => {
 
 }
 
-simpsons.post('/', async (req, res) => {
+simpsonsRouter.post('/', async (req, res) => {
 
   try {
-    
     const { id, name } = req.body;
     const simpsons = await getAll();
-    const simpsonExist = await getSimpsomId(id);
-    if (simpsonExist) {
+    const simpsonExist = await getSimpsomId(+id);
+
+    if (simpsonExist !== undefined) {
       return res.status(409).json({ message: 'id already exists' });
     }
 
     simpsons.push({ id, name });
     await postSimpson(simpsons);
     
-    return res.status(204).json({ message: 'Simpson cadastrado com sucesso!!!!'})
+    return res.status(201).json({ message: 'Simpson cadastrado com sucesso!!!!'})
 
   } catch (error) {
     console.error(error.message);
+    return res.status(500).json({ message: 'erro inesperado!!!!'});
   }
 
 });
 
-simpsons.get('/', async(req, res) => {
+simpsonsRouter.get('/', async(req, res) => {
 
   try {
     const result = await getAll();
@@ -59,11 +61,12 @@ simpsons.get('/', async(req, res) => {
     return res.status(200).json({result});
   } catch (error) {
     console.error(error.message);
+    return res.status(500).json({ message: 'erro inesperado!!!!'});
   }
 
 });
 
-simpsons.get('/:id', async(req, res) => {
+simpsonsRouter.get('/:id', async(req, res) => {
 
   try {
     const { id } = req.params;
@@ -76,8 +79,9 @@ simpsons.get('/:id', async(req, res) => {
     
   } catch (error) {
     console.error(error.message);
+    return res.status(500).json({ message: 'erro inesperado!!!!'});
   }
 
 });
 
-module.exports = simpsons;
+module.exports = simpsonsRouter;
