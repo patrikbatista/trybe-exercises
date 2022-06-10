@@ -1,11 +1,15 @@
 const { Router } = require('express');
-const fs = require('fs').promises;
+const fs = require('fs/promises');
+const path = require('path');
+
 
 const simpsons = Router();
 
 const getAll = async () => {
-  const simpsonsFile = await fs.readFile(path.join(__dir,'simpsons.json'), 'utf-8');
+  const simpsonsFile = await fs.readFile('./src/simpsons.json', 'utf-8');
+
   const simpsons = JSON.parse(simpsonsFile);
+  return simpsons;
 }
 
 simpsons.get('/', async(req, res) => {
