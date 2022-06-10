@@ -22,6 +22,35 @@ const getSimpsomId = async (id) => {
   return simpsonId;
 }
 
+const postSimpson = async (simpson) => {
+
+  const newSimpson = await fs.writeFile('./src/simpsons.json', JSON.stringify(simpson));
+  return newSimpson;
+
+}
+
+simpsons.post('/', async (req, res) => {
+
+  try {
+    
+    const { id, name } = req.body;
+    const simpsons = await getAll();
+    const simpsonExist = await getSimpsomId(id);
+    if (simpsonExist) {
+      return res.status(409).json({ message: 'id already exists' });
+    }
+
+    simpsons.push({ id, name });
+    await postSimpson(simpsons);
+    
+    return res.status(204).json({ message: 'Simpson cadastrado com sucesso!!!!'})
+
+  } catch (error) {
+    console.error(error.message);
+  }
+
+});
+
 simpsons.get('/', async(req, res) => {
 
   try {
@@ -46,8 +75,9 @@ simpsons.get('/:id', async(req, res) => {
     return res.status(200).json(simpsonFind);
     
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
+
 });
 
 module.exports = simpsons;
