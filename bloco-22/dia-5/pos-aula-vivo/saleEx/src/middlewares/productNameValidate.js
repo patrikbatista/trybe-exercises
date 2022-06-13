@@ -6,5 +6,5 @@ module.exports = (req, res, next) => {
   if (!result.response){
     return res.status(result.status).json({message: result.message});
   }
-  next();
+  return next();
 }
