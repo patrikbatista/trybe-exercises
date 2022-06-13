@@ -32,7 +32,7 @@ module.exports = (infos) => {
     };    
   }
 
-  if(!warrantyPeriod){
+  if(warrantyPeriod === undefined){
     return { 
       status: 400, 
       message: 'O campo warrantyPeriod é obrigatório', 
@@ -40,7 +40,7 @@ module.exports = (infos) => {
     };
   }
 
-  if(+warrantyPeriod < 1 || +warrantyPeriod > 3) {
+  if(+warrantyPeriod < 1 || +warrantyPeriod > 3 || !Number(warrantyPeriod)) {
     return { 
       status: 400, 
       message: 'O campo warrantyPeriod precisa estar entre 1 e 3', 
