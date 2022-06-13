@@ -1,15 +1,7 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "rules": {
-    }
+    "root": true,
+  "extends": ["trybe-backend"],
+  "rules": {
+    "sonarjs/no-duplicate-string": ["error", 5]
+  }
 }
