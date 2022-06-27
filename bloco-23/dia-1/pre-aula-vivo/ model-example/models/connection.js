@@ -6,6 +6,4 @@ const mysql = require('mysql2/promise');
   database: 'model_example'
  });
 
- module.exports = {
-  connection,
- }
+ module.exports = connection;
