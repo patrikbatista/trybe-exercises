@@ -3,12 +3,13 @@ const express = require('express');
 const app = express();
 
 const Book = require('./models/Book');
+const Author = require('./models/Author');
 
 
 app.get('/books', async (_req, res) => {
-	const book = await Book.getAll();
+	const authors = await Author.getAll();
 
-	res.status(200).json(book);
+	res.status(200).json(authors);
 });
 
 const PORT = process.env.PORT || 3000;
