@@ -11,7 +11,14 @@ const addCep = async (data) => {
   (cep, logradouro, bairro, localidade, uf) values(?,?,?,?,?);`;
   const [{ insertId }] = await db
       .query(query, [data.cep, data.logradouro, data.bairro, data.localidade, data.uf]);
-    return insertId;
+    return {
+      id: insertId,
+      cep: data.cep, 
+      logradouro: data.logradouro, 
+      bairro: data.bairro, 
+      localidade: data.localidade, 
+      uf: data.uf,
+    };
 };
 module.exports = {
   getCep,

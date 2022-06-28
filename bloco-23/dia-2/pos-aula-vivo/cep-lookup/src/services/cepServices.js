@@ -24,7 +24,12 @@ const cepExistAdd = async (cep) => {
   return result;
 };
 
+const cepAdd = async (value) => {
+  await cepModel.addCep(value);
+};
+
 module.exports = {
   cepExist,
   cepExistAdd,
+  cepAdd,
 };
