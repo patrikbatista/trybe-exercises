@@ -5,7 +5,19 @@ const cepExist = async (cep) => {
   if (result.length === 0) {
     const error = { 
       status: 400,
-      message: { error: { code: 'notFound', message: 'CEP não encontrado' } },
+      message: 'CEP não encontrado',
+    };
+    throw error;
+  }
+  return result;
+};
+
+const cepExistAdd = async (cep) => {
+  const result = await cepModel.getCep(cep);
+  if (result.length !== 0) {
+    const error = { 
+      status: 400,
+      message: 'CEP já existe',
     };
     throw error;
   }
@@ -14,4 +26,5 @@ const cepExist = async (cep) => {
 
 module.exports = {
   cepExist,
+  cepExistAdd,
 };
