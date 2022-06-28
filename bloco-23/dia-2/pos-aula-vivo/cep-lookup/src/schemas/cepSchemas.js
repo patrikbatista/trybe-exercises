@@ -2,7 +2,6 @@ const cepValidate = require('@brazilian-utils/is-valid-cep');
 
 const isValideCep = (cep) => {
   const isValid = cepValidate(cep);
-  console.log(isValid);
   if (!isValid) {
     const error = { 
       status: 400, 

@@ -2,7 +2,6 @@ const cepModel = require('../models/cepModel');
 
 const cepExist = async (cep) => {
   const result = await cepModel.getCep(cep);
-  console.log(result);
   if (result.length === 0) {
     const error = { 
       status: 400,
