@@ -6,6 +6,14 @@ const getCep = async (cep) => {
   return item;
 };
 
+const addCep = async (data) => {
+  const query = `INSERT INTO cep_lookup 
+  (cep, logradouro, bairro, localidade, uf) values(?,?,?,?,?);`;
+  const [{ insertId }] = await db
+      .query(query, [data.cep, data.logradouro, data.bairro, data.localidade, data.uf]);
+    return insertId;
+};
 module.exports = {
   getCep,
+  addCep,
 };
