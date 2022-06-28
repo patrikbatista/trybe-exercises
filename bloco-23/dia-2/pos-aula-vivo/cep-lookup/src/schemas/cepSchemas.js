@@ -3,8 +3,11 @@ const cepValidate = require('@brazilian-utils/is-valid-cep');
 const isValideCep = (cep) => {
   const isValid = cepValidate(cep);
   if (!isValid) {
-    throw { status: 400, 
-      message: { error: { code: 'invalidData', message: 'CEP inválido' } } };
+    const error = { 
+      status: 400, 
+      message: { error: { code: 'invalidData', message: 'CEP inválido' } }, 
+    };
+    throw error;
   }
   return true;
 };
