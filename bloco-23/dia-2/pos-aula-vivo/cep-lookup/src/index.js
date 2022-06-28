@@ -5,6 +5,7 @@ const cepRoute = require('./routes/cepRoute');
 const handlerError = require('./middlewares/handlerError');
 
 const app = express();
+app.use(express.json());
 
 app.use('/cep', cepRoute);
 
