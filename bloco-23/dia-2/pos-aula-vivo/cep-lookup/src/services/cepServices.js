@@ -16,7 +16,7 @@ const cepExistAdd = async (cep) => {
   const result = await cepModel.getCep(cep);
   if (result.length !== 0) {
     const error = { 
-      status: 400,
+      status: 409,
       message: 'CEP já existe',
     };
     throw error;

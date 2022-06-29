@@ -14,19 +14,25 @@ const isValideCep = (cep) => {
 };
 
 const bodyAddSchema = Joi.object({
-  cep: Joi.string(),
+  cep: Joi.string().length(8).required()
+    .messages({ 
+      'any.required': 'cep é obrigatorio',
+      'string.length': 'cep deve ter 8 caracteres',
+      'string.base': 'cep tem deve ser string',
+    }),
   logradouro: Joi.string().required(),
   bairro: Joi.string().required(),
   localidade: Joi.string().required(),
   uf: Joi.string().required(),
 }).required();
 
-const validateBodyEdit = async (value) => {
-  const result = await bodyAddSchema.validateAsync(value);
-  if (!result) {
+const validateBodyEdit = (value) => {
+  const result = bodyAddSchema.validate(value);
+  if (result.error) {
+    console.log(result.error);
     const error = { 
-      status: 401, 
-      message: 'Dados inválidos', 
+      status: 422, 
+      message: result.error.details[0].message, 
     };
     throw error;
   }
