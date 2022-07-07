@@ -1,27 +1,13 @@
 'use strict';
+
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      fullName: {
-        type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
+  up: async (queryInterface, Sequelize) => {
+   await queryInterface.addColumn('Users', 'phone_num', {
+     type: Sequelize.STRING,
+   });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn('Users', 'phone_num');
   }
 };
