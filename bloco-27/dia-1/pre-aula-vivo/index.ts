@@ -9,4 +9,5 @@ p1.sleep();
 p2.sleep();
 
 const tv1 = new Tv('LG', 32, '4K', ['HDMI', 'Ethernet', 'Wifi']);
+
 tv1.turnOn();
