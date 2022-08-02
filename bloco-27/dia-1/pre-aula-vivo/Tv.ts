@@ -13,8 +13,8 @@ export default class Tv {
   }
 
   turnOn(): void {
-    console.log(
-      `Tv ${this.brand}, 
+    console.log(`
+      Tv ${this.brand}, 
       size ${this.size}, 
       resolution ${this.resolution}, 
       connections ${this.connections} 
