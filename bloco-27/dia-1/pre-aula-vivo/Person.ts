@@ -1,13 +1,13 @@
-class Person {
+export default class Person {
   name: string;
   height: number;
   weight: number;
 
-  constructor(n: string, h: number, w: number) {
-    console.log(`Creating person ${n}`);
-    this.name = n;
-    this.height = h;
-    this.weight = w;
+  constructor(name: string, height: number, weight: number) {
+    console.log(`Creating person ${name}`);
+    this.name = name;
+    this.height = height;
+    this.weight = weight;
   }
 
   sleep() {
