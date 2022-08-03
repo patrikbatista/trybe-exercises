@@ -48,5 +48,20 @@ export default class Pedido {
    }
     this._desconto = value;
   }
+
+  total(){
+    let total = 0;
+    for(let item of this._itens){
+      total = total + item.preco;
+    }
+    return total - this._desconto;
+  }
   
+  pedidoFeito(): void{
+    console.log(`Pedido feito por ${this._cliente.nome}`);
+    console.log(...`Itens:`);
+    
+    this._itens.map(item => console.log(...item.nome, ' ', item.preco))
+    console.log(`Total: ${this.total()}`);    
+  }
 }
