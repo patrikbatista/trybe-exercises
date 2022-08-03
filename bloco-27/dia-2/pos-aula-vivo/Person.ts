@@ -31,13 +31,17 @@ export default class Person {
   }
 
   private validateName(value: string): void {
-    if (value.length < 3) throw new Error('O nome deve conter no mínimo 3 caracteres.');
+    if (value.length < 3) {
+      throw new Error('O nome deve conter no mínimo 3 caracteres.');
+    }
   }
 
   private validateBirthDate(value: Date): void {
     if (value.getTime() > new Date().getTime()) {
       throw new Error('A data de nascimento não pode ser uma data no futuro.');
     }
-    if (Person.getAge(value) > 120) throw new Error('A pessoa deve ter no máximo 120 anos.');
+    if (Person.getAge(value) > 120) {
+      throw new Error('A pessoa deve ter no máximo 120 anos.');
+    }
   }
 }
