@@ -1,0 +1,8 @@
+//buscando todos os resultados
+use("bios");
+db.bios.find();
+
+//Exercício 1: Retorne o documento com o _id igual a 8.
+use("bios");
+db.bios.find({_id: 8});
+
