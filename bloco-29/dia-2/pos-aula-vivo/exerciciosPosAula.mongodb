@@ -25,6 +25,6 @@ db.superheroes.countDocuments({
 
 // Exercício 5: Selecione um super-herói com 2.00m ou mais de altura.
 use("class");
-db.superheroes.countDocuments({
-  "aspects.height": { $gt: 180 }
+db.superheroes.findOne({
+  "aspects.height": { $gte: 200 }
 });
