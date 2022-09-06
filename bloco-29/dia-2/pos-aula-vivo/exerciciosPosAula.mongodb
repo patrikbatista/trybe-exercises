@@ -34,3 +34,27 @@ use("class");
 db.superheroes.countDocuments({
   "aspects.height": { $gte: 200 }
 });
+
+// Exercício 7: Selecione todos os super-heróis que têm olhos verdes.
+use("class");
+db.superheroes.find({
+  "aspects.eyeColor": "green"
+});
+
+// Exercício 8: Retorne o total de super-heróis com olhos azuis.
+use("class");
+db.superheroes.countDocuments({
+  "aspects.eyeColor": "blue"
+});
+
+// Exercício 9: Utilizando o operador $in, selecione todos os super-heróis com cabelos pretos ou carecas ("No Hair").
+use("class");
+db.superheroes.find({
+  "aspects.hairColor": { $in: ['Black', 'No Hair'] }
+});
+
+// Exercício 10: Retorne o total de super-heróis com cabelos pretos ou carecas ("No Hair").
+use("class");
+db.superheroes.countDocuments({
+  "aspects.hairColor": { $in: ['Black', 'No Hair'] }
+});
